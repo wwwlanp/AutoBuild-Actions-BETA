@@ -154,6 +154,9 @@ EOF
 				
 				AddPackage passwall Openwrt-Passwall openwrt-passwall main
 			    AddPackage passwall Openwrt-Passwall openwrt-passwall-packages main
+				
+				git clone https://github.com/QiuSimons/luci-app-daed package/dae
+				
 				sed -i 's/^local excluded_domain = {.*/local excluded_domain = {}/' package/passwall/openwrt-passwall/luci-app-passwall/root/usr/share/passwall/rule_update.lua
 				
 				rm -rf feeds/packages/lang/golang
