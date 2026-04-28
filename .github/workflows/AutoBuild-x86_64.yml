@@ -207,7 +207,13 @@ jobs:
     - name: Build LLVM host tools
       run: |
         cd openwrt
-        make tools/llvm-bpf/compile -j$(nproc) || make -j1 V=s
+        mkdir -p staging_dir/host/bin
+        ln -sf /usr/bin/clang staging_dir/host/bin/clang
+        ln -sf /usr/bin/clang++ staging_dir/host/bin/clang++
+        ln -sf /usr/bin/llc staging_dir/host/bin/llc
+        ln -sf /usr/bin/llvm-strip staging_dir/host/bin/llvm-strip
+        ln -sf /usr/bin/llvm-dis staging_dir/host/bin/llvm-dis
+        ln -sf /usr/bin/opt staging_dir/host/bin/opt
     
     - name: Build OpenWrt
       id: compile
